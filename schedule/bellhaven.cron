@@ -1,0 +1,8 @@
+# Proposed schedule only; not installed.
+# Run daily at 06:00 New York time on a persistent machine using a cron
+# implementation that supports CRON_TZ (e.g. Cronie).
+# Replace /absolute/path/bellhaven-review and /usr/bin/node for the host.
+# Provision CRM_TOKEN securely in the job's environment, never in this file.
+# Use the same persistent data directory as the review server.
+CRON_TZ=America/New_York
+0 6 * * * cd /absolute/path/bellhaven-review && /usr/bin/node cli.mjs >> data/daily-scan.log 2>&1

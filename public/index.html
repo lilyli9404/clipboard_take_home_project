@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="review-csrf" content="__CSRF__"><title>Facility & Parent Review</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/review.css"><script src="/app.js" type="module"></script></head><body>
+<header><div class="brand">B<span>Facility Review <small>CRM OPERATIONS</small></span></div><div class="header-actions"><span id="connection">Local review workspace</span><a href="/api/export" target="_blank">Export audit</a></div></header>
+<main><section class="intro"><div><p class="eyebrow">FACILITY RECONCILIATION</p><h1>Facility & Parent Review</h1><p>Review differences by category. One facility per record, with all applicable review prompts.</p></div><div class="run-panel"><button id="scan">Run read-only scan <span>↗</span></button><p id="runInfo"></p><details id="connectPanel"><summary>Connect CRM token</summary><form id="connectForm"><label for="token">API token stays in server memory</label><input id="token" type="password" autocomplete="off" placeholder="bh_…" required><button>Connect</button></form></details></div></section>
+<div id="notice" role="status" aria-live="polite"></div><section class="metrics" id="metrics"></section>
+<nav class="view-tabs"><button class="active" data-view="review">Review queue</button><button data-view="coverage">Website directory</button><button data-view="audit">Decision history</button></nav>
+<section id="reviewView"><div class="filters">
+<label>Status<select id="status"><option value="pending">Pending / needs attention</option><option value="all">All records</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="failed">Failed</option><option value="superseded">Superseded</option></select></label>
+<label>Difference category<select id="category"><option value="">All categories</option></select></label>
+<label>Current CRM parent<select id="parentFilter"><option value="">All parents</option></select></label>
+<label>Bellhaven affiliation<select id="affiliation"><option value="">All affiliations</option><option value="bellhaven">All candidates under Bellhaven</option><option value="mixed">Some candidates under Bellhaven</option><option value="other">Other parents / no Bellhaven</option><option value="none">All candidates unparented</option><option value="new">No CRM candidate</option></select></label>
+<label>Website target parent<select id="targetFilter"><option value="">All target parents</option></select></label>
+<label>Date field<select id="timeField"><option value="created">First detected</option><option value="scan">Last observed</option><option value="crm">Latest CRM update</option></select></label>
+<label>From date (New York)<input type="date" id="fromDate"></label><label>To date (New York)<input type="date" id="toDate"></label>
+<label>Sort order<select id="sort"><option value="priority">Priority first</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></label>
+<label class="check-label"><input type="checkbox" id="importantOnly">Priority only</label></div>
+<div class="toolbar"><input id="search" type="search" aria-label="Search facilities or accounts" placeholder="Search facility, account ID, city or parent"><button class="secondary" id="resetFilters">Reset filters</button><span id="queueCount"></span></div>
+<p class="muted">Red priority items always appear first: website absence, CHOW, multiple candidates, and distance or identity concerns. Parent filters inspect every candidate in a group.</p>
+<div class="workspace"><aside id="queue" aria-label="Review records"></aside><article id="detail"></article></div></section>
+<section id="coverageView" hidden></section><section id="auditView" hidden></section>
+<footer>Local review · Durable decisions and audit log · Read-only scans · Preview and approval before CRM writes</footer></main></body></html>
